@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pirate Adventure Game</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>Pirate Adventure Game</h1>
+  <p id="story"></p>
+  <div id="choices">
+    <button onclick="makeChoice(1)">Set Sail</button>
+  </div>
+
+  <script>
+    let storyElement = document.getElementById('story');
+    let choicesElement = document.getElementById('choices');
+    let currentScene = 1;
+
+    function makeChoice(choice) {
+      switch (currentScene) {
+        case 1:
+          if (choice === 1) {
+            storyElement.textContent = "You set sail on the high seas!";
+            choicesElement.innerHTML = '<button onclick="makeChoice(2)">Explore an island</button>' +
+                                      '<button onclick="makeChoice(3)">Engage in a sea battle</button>' +
+                                      '<button onclick="resetGame()">Start Over</button>';
+            currentScene = 4;
+          }
+          break;
+        case 2:
+          // Handle choices for exploring an island
+          break;
+        case 3:
+          // Handle choices for sea battle
+          break;
+        // Add more scenes and choices as needed
+        default:
+          break;
+      }
+    }
+
+    function resetGame() {
+      storyElement.textContent = "Welcome to the Pirate Adventure Game. Choose your destiny!";
+      choicesElement.innerHTML = '<button onclick="makeChoice(1)">Set Sail</button>';
+      currentScene = 1;
+    }
+
+    // Initial setup
+    storyElement.textContent = "Welcome to the Pirate Adventure Game. Choose your destiny!";
+  </script>
+</body>
+</html>
