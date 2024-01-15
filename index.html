@@ -7,53 +7,111 @@
   <style>
     body {
       font-family: 'Arial', sans-serif;
-      text-align: center;
     }
   </style>
 </head>
 <body>
-  <h1>Pirate Adventure Game</h1>
-  <p id="story"></p>
-  <div id="choices">
-    <button onclick="makeChoice(1)">Set Sail</button>
-  </div>
-
   <script>
-    let storyElement = document.getElementById('story');
-    let choicesElement = document.getElementById('choices');
-    let currentScene = 1;
+    let currentScene = 'start';
 
-    function makeChoice(choice) {
+    function startGame() {
+      alert("Ahoy there! Welcome to the Pirate Adventure Game!");
+      showScene();
+    }
+
+    function showScene() {
       switch (currentScene) {
-        case 1:
-          if (choice === 1) {
-            storyElement.textContent = "You set sail on the high seas!";
-            choicesElement.innerHTML = '<button onclick="makeChoice(2)">Explore an island</button>' +
-                                      '<button onclick="makeChoice(3)">Engage in a sea battle</button>' +
-                                      '<button onclick="resetGame()">Start Over</button>';
-            currentScene = 4;
-          }
+        case 'start':
+          displayText("You find yourself on a deserted island. What would you like to do?");
+          displayOptions(['Explore the island', 'Look for a boat', 'Stay on the beach']);
           break;
-        case 2:
-          // Handle choices for exploring an island
+        case 'explore':
+          displayText("As you explore the island, you discover a hidden cave. What's your next move?");
+          displayOptions(['Enter the cave', 'Continue exploring', 'Go back to the beach']);
           break;
-        case 3:
-          // Handle choices for sea battle
+        case 'cave':
+          displayText("Inside the cave, you find a treasure chest! What do you do?");
+          displayOptions(['Open the chest', 'Leave the cave']);
           break;
-        // Add more scenes and choices as needed
+        case 'openChest':
+          displayText("Congratulations! You've found a pirate's treasure. You win!");
+          displayOptions(['Play again']);
+          break;
+        case 'lookForBoat':
+          displayText("You search for a boat and find a small rowboat. What's your next move?");
+          displayOptions(['Row out to sea', 'Explore the island', 'Go back to the beach']);
+          break;
+        case 'rowOutToSea':
+          displayText("As you row out to sea, you encounter a pirate ship. What do you do?");
+          displayOptions(['Approach the ship', 'Row back to the island', 'Stay hidden']);
+          break;
+        case 'approachShip':
+          displayText("The pirates welcome you aboard! You've joined a pirate crew.");
+          displayOptions(['Celebrate your new pirate life', 'Play again']);
+          break;
+        case 'celebratePirateLife':
+          displayText("Arr matey! You're now a true pirate. Thanks for playing!");
+          displayOptions(['Play again']);
+          break;
         default:
-          break;
+          displayText("Unknown scene. Please try again.");
       }
     }
 
-    function resetGame() {
-      storyElement.textContent = "Welcome to the Pirate Adventure Game. Choose your destiny!";
-      choicesElement.innerHTML = '<button onclick="makeChoice(1)">Set Sail</button>';
-      currentScene = 1;
+    function displayText(message) {
+      alert(message);
     }
 
-    // Initial setup
-    storyElement.textContent = "Welcome to the Pirate Adventure Game. Choose your destiny!";
+    function displayOptions(options) {
+      let optionsText = '';
+      for (let i = 0; i < options.length; i++) {
+        optionsText += `${i + 1}. ${options[i]}\n`;
+      }
+      const userInput = prompt(`${optionsText}\nEnter the number of your choice:`);
+      handleChoice(parseInt(userInput));
+    }
+
+    function handleChoice(choice) {
+      switch (currentScene) {
+        case 'start':
+          if (choice === 1) currentScene = 'explore';
+          else if (choice === 2) currentScene = 'lookForBoat';
+          else if (choice === 3) currentScene = 'stayOnBeach';
+          break;
+        case 'explore':
+          if (choice === 1) currentScene = 'cave';
+          else if (choice === 2) currentScene = 'continueExploring';
+          else if (choice === 3) currentScene = 'stayOnBeach';
+          break;
+        case 'cave':
+          if (choice === 1) currentScene = 'openChest';
+          else if (choice === 2) currentScene = 'explore';
+          break;
+        case 'openChest':
+        case 'lookForBoat':
+        case 'rowOutToSea':
+        case 'approachShip':
+          if (choice === 1) currentScene = 'celebratePirateLife';
+          else if (choice === 2) currentScene = 'playAgain';
+          break;
+        case 'continueExploring':
+        case 'stayOnBeach':
+          currentScene = 'playAgain';
+          break;
+        default:
+          currentScene = 'start';
+      }
+
+      if (currentScene === 'playAgain') {
+        currentScene = 'start';
+        alert("Thanks for playing! Let's start again.");
+      }
+
+      showScene();
+    }
+
+    // Start the game
+    startGame();
   </script>
 </body>
 </html>
