@@ -1,0 +1,63 @@
+*::before, *::after{
+    box-sizing: border-box;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+body {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: #76b6c4;
+    background-image: url('https://elephantsonthewall.com/cdn/shop/products/800-PPTreasureMap_grande.jpg?v=1554828263');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+
+  .container{
+    width: 800px;
+    max-width: 80%;
+    background-color: black;
+    padding: 10px;
+    border-radius: 5px;
+    border-color: red;
+    box-shadow: 0 0 10px 2px;
+  }
+
+  .btn-grid{
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .btn{
+    background-color: hsl(0, 100%, 50%);
+    border: 1px solid hsl(9, 100%, 30%);
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: white;
+    cursor: pointer;
+    outline: none;
+    font-size: large;
+    font: bold;
+  }
+
+  .btn:hover{
+    border-color: white;
+  }
+#text{
+    background-color: black;
+    text-align: center;
+    color: white;
+    border: 1px solid red;
+    padding: 10px;
+    font: bold;
+    font-size: 20px;
+}
+

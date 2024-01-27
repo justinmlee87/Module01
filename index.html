@@ -3,115 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pirate Adventure Game</title>
-  <style>
-    body {
-      font-family: 'Arial', sans-serif;
-    }
-  </style>
+  <link href="styles.css" rel="stylesheet">
+  <script defer src="game.js"></script>
+  <title>A Pirate's Adventure</title>
 </head>
+
 <body>
-  <script>
-    let currentScene = 'start';
-
-    function startGame() {
-      alert("Ahoy there! Welcome to the Pirate Adventure Game!");
-      showScene();
-    }
-
-    function showScene() {
-      switch (currentScene) {
-        case 'start':
-          displayText("You find yourself on a deserted island. What would you like to do?");
-          displayOptions(['Explore the island', 'Look for a boat', 'Stay on the beach']);
-          break;
-        case 'explore':
-          displayText("As you explore the island, you discover a hidden cave. What's your next move?");
-          displayOptions(['Enter the cave', 'Continue exploring', 'Go back to the beach']);
-          break;
-        case 'cave':
-          displayText("Inside the cave, you find a treasure chest! What do you do?");
-          displayOptions(['Open the chest', 'Leave the cave']);
-          break;
-        case 'openChest':
-          displayText("Congratulations! You've found a pirate's treasure. You win!");
-          displayOptions(['Play again']);
-          break;
-        case 'lookForBoat':
-          displayText("You search for a boat and find a small rowboat. What's your next move?");
-          displayOptions(['Row out to sea', 'Explore the island', 'Go back to the beach']);
-          break;
-        case 'rowOutToSea':
-          displayText("As you row out to sea, you encounter a pirate ship. What do you do?");
-          displayOptions(['Approach the ship', 'Row back to the island', 'Stay hidden']);
-          break;
-        case 'approachShip':
-          displayText("The pirates welcome you aboard! You've joined a pirate crew.");
-          displayOptions(['Celebrate your new pirate life', 'Play again']);
-          break;
-        case 'celebratePirateLife':
-          displayText("Arr matey! You're now a true pirate. Thanks for playing!");
-          displayOptions(['Play again']);
-          break;
-        default:
-          displayText("Unknown scene. Please try again.");
-      }
-    }
-
-    function displayText(message) {
-      alert(message);
-    }
-
-    function displayOptions(options) {
-      let optionsText = '';
-      for (let i = 0; i < options.length; i++) {
-        optionsText += `${i + 1}. ${options[i]}\n`;
-      }
-      const userInput = prompt(`${optionsText}\nEnter the number of your choice:`);
-      handleChoice(parseInt(userInput));
-    }
-
-    function handleChoice(choice) {
-      switch (currentScene) {
-        case 'start':
-          if (choice === 1) currentScene = 'explore';
-          else if (choice === 2) currentScene = 'lookForBoat';
-          else if (choice === 3) currentScene = 'stayOnBeach';
-          break;
-        case 'explore':
-          if (choice === 1) currentScene = 'cave';
-          else if (choice === 2) currentScene = 'continueExploring';
-          else if (choice === 3) currentScene = 'stayOnBeach';
-          break;
-        case 'cave':
-          if (choice === 1) currentScene = 'openChest';
-          else if (choice === 2) currentScene = 'explore';
-          break;
-        case 'openChest':
-        case 'lookForBoat':
-        case 'rowOutToSea':
-        case 'approachShip':
-          if (choice === 1) currentScene = 'celebratePirateLife';
-          else if (choice === 2) currentScene = 'playAgain';
-          break;
-        case 'continueExploring':
-        case 'stayOnBeach':
-          currentScene = 'playAgain';
-          break;
-        default:
-          currentScene = 'start';
-      }
-
-      if (currentScene === 'playAgain') {
-        currentScene = 'start';
-        alert("Thanks for playing! Let's start again.");
-      }
-
-      showScene();
-    }
-
-    // Start the game
-    startGame();
-  </script>
+  <div class="container">
+    <div id="text">text</div>
+    <div id="option-buttons" class="btn-grid">
+      <button class="btn">Option 1</button>
+      <button class="btn">Option 2</button>
+      <button class="btn">Option 3</button>
+      <button class="btn">Option 4</button>
+    </div>
+  </div>
 </body>
 </html>
