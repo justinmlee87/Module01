@@ -1,14 +1,6 @@
 # Overview
 
-{Important! Do not say in this section that this is college assignment. Talk about what you are trying to accomplish as a software engineer to further your learning.}
-
-{Provide a description of the software that you wrote to demonstrate the JavaScript language.}
-
-{Describe your purpose for writing this software.}
-
-{Provide a link to your YouTube demonstration. It should be a 4-5 minute demo of the software running and a walkthrough of the code. Focus should be on sharing what you learned about the language syntax.}
-
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://youtu.be/wBJibsY6zN4)
 
 # Development Environment
 
@@ -25,8 +17,6 @@ I primarily used javascript to handle my program with some assistance from CSS a
 - [Code Guppy](https://codeguppy.com/site/tutorials/escape-the-lab.html) -[Hack MD](https://hackmd.io/@dethe/r1eH-CMdS)
 
 # Future Work
-
-{Make a list of things that you need to fix, improve, and add in the future.}
 
 - I'd like to add more scenarios or make them a little more diverse.
 - I'd like to edit some of the HTML and CSS a little further to make the contrast better and the background image nicer.
