@@ -1,6 +1,7 @@
 const textElement = document.getElementById('text')
 const optionButtonsElement = document.getElementById('option-buttons')
 
+//default state to null
 let state = {}
 
 //This is the function to start the game
