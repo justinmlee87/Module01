@@ -3,11 +3,13 @@ const optionButtonsElement = document.getElementById('option-buttons')
 
 let state = {}
 
+//This is the function to start the game
 function startGame() {
   state = {}
   showTextNode(1)
 }
 
+//This is the function to handle the different text nodes
 function showTextNode(textNodeIndex) {
   const textNode = textNodes.find(textNode => textNode.id === textNodeIndex)
   textElement.innerText = textNode.text
@@ -25,11 +27,11 @@ function showTextNode(textNodeIndex) {
     }
   })
 }
-
+//function to show options
 function showOption(option) {
   return option.requiredState == null || option.requiredState(state)
 }
-
+//function to select options
 function selectOption(option) {
   const nextTextNodeId = option.nextText
   if (nextTextNodeId <= 0) {
@@ -39,6 +41,11 @@ function selectOption(option) {
   showTextNode(nextTextNodeId)
 }
 
+//Stores the different options giving them each individual IDs.
+//Different options are displayed as text. The options displayed and available are dependent on what the users choice is.
+//ex. set state for id:1 when selecting 'take the gold' is gold: true.
+//Notice a set state is not necessary for choosing to leave the gold as it has not affect on the options.
+//When the user makes an incorrect selection and loses the game, they are given an option to restart
 const textNodes = [
   {
     id: 1,
